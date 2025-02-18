@@ -1,39 +1,39 @@
 import React from "react";
-import{CiGlobe} from "react-icons/ci"
-import{FaApple, FaTabletAlt} from "react-icons/fa"
+import { CiGlobe } from "react-icons/ci";
+import { FaApple, FaTabletAlt } from "react-icons/fa";
 import { DiAndroid } from "react-icons/di";
 
 const Platforms = () => {
   return (
-    <div className="p-5 bg-white rounded-xl">
-      <h1 className="text-2xl font-bold text-gray-700">Platforms</h1>
-      <div className="p-2 grid grid-cols-2 gap-8">
-        <div className="space-y-3 text-gray-500">
-            <h1 className="text-2xl font-bold">58</h1>
-            <p className="flex items-center space-x-2">
-                <CiGlobe/><span>website</span>
-            </p>
+    <div className="p-5 bg-white shadow-lg rounded-xl">
+      <h1 className="text-2xl font-bold text-gray-700 mb-4">Booking Platforms</h1>
+      <div className="grid grid-cols-2 gap-6">
+        {/* Website Bookings */}
+        <div className="space-y-2 text-gray-600 flex flex-col items-center bg-gray-100 p-4 rounded-lg">
+          <CiGlobe className="text-4xl text-blue-600" />
+          <h1 className="text-2xl font-bold text-gray-900">124</h1>
+          <p className="text-sm">Website</p>
         </div>
 
-        <div className="space-y-3 text-gray-500">
-            <h1 className="text-2xl font-bold">87</h1>
-            <p className="flex items-center space-x-2">
-                <FaApple/><span>IOS</span>
-            </p>
+        {/* iOS Bookings */}
+        <div className="space-y-2 text-gray-600 flex flex-col items-center bg-gray-100 p-4 rounded-lg">
+          <FaApple className="text-4xl text-gray-800" />
+          <h1 className="text-2xl font-bold text-gray-900">87</h1>
+          <p className="text-sm">iOS</p>
         </div>
 
-        <div className="space-y-3 text-gray-500">
-            <h1 className="text-2xl font-bold">58</h1>
-            <p className="flex items-center space-x-2">
-                <DiAndroid/><span>Andriod</span>
-            </p>
+        {/* Android Bookings */}
+        <div className="space-y-2 text-gray-600 flex flex-col items-center bg-gray-100 p-4 rounded-lg">
+          <DiAndroid className="text-4xl text-green-500" />
+          <h1 className="text-2xl font-bold text-gray-900">156</h1>
+          <p className="text-sm">Android</p>
         </div>
 
-        <div className="space-y-3 text-gray-500">
-            <h1 className="text-2xl font-bold">58</h1>
-            <p className="flex items-center space-x-2">
-                <FaTabletAlt/><span>Tablets</span>
-            </p>
+        {/* Tablet Bookings */}
+        <div className="space-y-2 text-gray-600 flex flex-col items-center bg-gray-100 p-4 rounded-lg">
+          <FaTabletAlt className="text-4xl text-purple-500" />
+          <h1 className="text-2xl font-bold text-gray-900">45</h1>
+          <p className="text-sm">Tablets</p>
         </div>
       </div>
     </div>

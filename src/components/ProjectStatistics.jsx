@@ -1,120 +1,145 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from "react";
 
-const ProjectStatistics = () => {
-    const options = {
-        // add data series via arrays, learn more here: https://apexcharts.com/docs/series/
-        series: [
-          {
-            name: "Developer Edition",
-            data: [1500, 1418, 1456, 1526, 1356, 1256],
-            color: "#1A56DB",
-          },
-          {
-            name: "Designer Edition",
-            data: [643, 413, 765, 412, 1423, 1731],
-            color: "#7E3BF2",
-          },
-        ],
-        chart: {
-          height: "100%",
-          maxWidth: "100%",
-          type: "area",
-          fontFamily: "Inter, sans-serif",
-          dropShadow: {
-            enabled: false,
-          },
-          toolbar: {
-            show: false,
-          },
+const BikeBookingStatistics = () => {
+  const options = {
+    series: [
+      {
+        name: "Daily Bookings",
+        data: [50, 68, 45, 72, 85, 90, 110], // Simulated booking data
+        color: "#1A56DB",
+      },
+      {
+        name: "Canceled Bookings",
+        data: [5, 8, 4, 10, 12, 6, 9],
+        color: "#FF3E00",
+      },
+    ],
+    chart: {
+      height: "100%",
+      maxWidth: "100%",
+      type: "area",
+      fontFamily: "Inter, sans-serif",
+      dropShadow: {
+        enabled: false,
+      },
+      toolbar: {
+        show: false,
+      },
+    },
+    tooltip: {
+      enabled: true,
+      x: {
+        show: false,
+      },
+    },
+    legend: {
+      show: true,
+    },
+    fill: {
+      type: "gradient",
+      gradient: {
+        opacityFrom: 0.55,
+        opacityTo: 0,
+        shade: "#1C64F2",
+        gradientToColors: ["#1C64F2"],
+      },
+    },
+    dataLabels: {
+      enabled: false,
+    },
+    stroke: {
+      width: 4,
+    },
+    grid: {
+      show: true,
+      strokeDashArray: 4,
+      padding: {
+        left: 2,
+        right: 2,
+        top: 0,
+      },
+    },
+    xaxis: {
+      categories: [
+        "01 Feb",
+        "02 Feb",
+        "03 Feb",
+        "04 Feb",
+        "05 Feb",
+        "06 Feb",
+        "07 Feb",
+      ],
+      labels: {
+        show: true,
+      },
+      axisBorder: {
+        show: true,
+      },
+      axisTicks: {
+        show: true,
+      },
+    },
+    yaxis: {
+      show: true,
+      labels: {
+        formatter: function (value) {
+          return value + " bookings";
         },
-        tooltip: {
-          enabled: true,
-          x: {
-            show: false,
-          },
-        },
-        legend: {
-          show: false
-        },
-        fill: {
-          type: "gradient",
-          gradient: {
-            opacityFrom: 0.55,
-            opacityTo: 0,
-            shade: "#1C64F2",
-            gradientToColors: ["#1C64F2"],
-          },
-        },
-        dataLabels: {
-          enabled: false,
-        },
-        stroke: {
-          width: 6,
-        },
-        grid: {
-          show: true,
-          strokeDashArray: 4,
-          padding: {
-            left: 2,
-            right: 2,
-            top: 0
-          },
-        },
-        xaxis: {
-          categories: ['01 February', '02 February', '03 February', '04 February', '05 February', '06 February', '07 February'],
-          labels: {
-            show:false,
-          },
-          axisBorder: {
-            show: true,
-          },
-          axisTicks: {
-            show: true,
-          },
-        },
-        yaxis: {
-          show: true,
-          labels: {
-            formatter: function (value) {
-              return '$' + value;
-            }
-          }
-        },
-        }
+      },
+    },
+  };
 
-        const chartRef =useRef(null);
+  const chartRef = useRef(null);
 
-        useEffect(()=>{
-            if(chartRef.current && typeof ApexCharts !=="undefined"){
-                const chart = new ApexCharts(chartRef.current,options);
-                chart.render();
+  useEffect(() => {
+    if (chartRef.current && typeof ApexCharts !== "undefined") {
+      const chart = new ApexCharts(chartRef.current, options);
+      chart.render();
 
-                return()=>{
-                    chart.destroy();
-                }
-            }
-        }),[options]
+      return () => {
+        chart.destroy();
+      };
+    }
+  }, [options]);
+
   return (
-    <div>
-    <div class="w-full bg-white rounded-xl p-4 md:p-6">
-      <div class="flex justify-between">
+    <div className="w-full bg-white shadow-lg rounded-xl p-6">
+      <div className="flex justify-between">
         <div>
-          <h5 class="leading-none text-3xl font-bold text-gray-900 pb-2">Project Statistics</h5>
-          <p class="text-base font-normal text-gray-500 dark:text-gray-400">Projects</p>
+          <h5 className="text-2xl font-bold text-gray-900 pb-2">
+            Bike Booking Statistics
+          </h5>
+          <p className="text-base font-normal text-gray-500">
+            Last 7 days performance
+          </p>
         </div>
-        <div
-          class="flex items-center px-2.5 py-0.5 text-base font-semibold text-green-500 dark:text-green-500 text-center">
-          23%
-          <svg class="w-3 h-3 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 14">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13V1m0 0L1 5m4-4 4 4"/>
-          </svg>
+        <div className="flex flex-col items-end">
+          <span className="text-lg font-semibold text-green-600">
+            Total Bookings: 540
+          </span>
+          <div className="flex items-center px-2 py-1 text-base font-semibold text-green-500">
+            15% Increase
+            <svg
+              className="w-4 h-4 ml-1"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 10 14"
+            >
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M5 13V1m0 0L1 5m4-4 4 4"
+              />
+            </svg>
+          </div>
         </div>
       </div>
-      <div ref={chartRef} id="data-series-chart"></div>
-      
+      <div ref={chartRef} id="bike-booking-chart"></div>
     </div>
-    </div>
-  )
-}
+  );
+};
 
-export default ProjectStatistics
+export default BikeBookingStatistics;
